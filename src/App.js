@@ -8,6 +8,7 @@ import {
 import HomePage from './pages/Home';
 import LoginPage from './pages/Login';
 import OrderPage from './pages/Order';
+import OTP from "./pages/OTP";
 import { selectIsLoggedIn } from './features/user/userSlice';
 import { useSelector } from 'react-redux';
 import './App.css';
@@ -21,6 +22,9 @@ function App() {
         <Switch>
           <Route path="/login">
             <LoginPage />
+          </Route>
+          <Route path="/otp">
+            <OTP />
           </Route>
           <PrivateRoute path="/order">
             <OrderPage />
