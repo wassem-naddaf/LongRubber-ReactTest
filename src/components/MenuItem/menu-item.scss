@@ -1,0 +1,22 @@
+.menu-item {
+    justify-content: space-between;
+    align-items: center;
+
+    .name {
+        margin: 0;
+    }
+
+    .price {
+        font-weight: 600;
+        font-size: 20px;
+    }
+
+    .add-btn {
+        height: fit-content;
+        font-weight: 600;
+        font-size: 16px;
+        padding: 10px 18px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+}

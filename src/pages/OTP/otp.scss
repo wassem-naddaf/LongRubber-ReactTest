@@ -1,0 +1,20 @@
+@import '../../theme/style';
+
+.otp-page {
+    min-height: 100vh;
+
+    .verify-btn {
+        padding: 10px 0px;
+        border-radius: 29px;
+        border: none;
+        font-family: 'Poppins', sans-serif;
+        cursor: pointer;
+    }
+    a {
+        text-decoration: none;
+        font-weight: 700;
+    }
+    p {
+        text-align: center;
+    }
+}

@@ -1,18 +1,22 @@
 import React from 'react';
 import Rate from './Rate';
-import imageHolder from './../assets/images/image-holder.png';
+import { useHistory } from 'react-router-dom';
 
-export default function RestaurantCard(){
+export default function RestaurantCard(props) {
+  const history = useHistory();
+  const handleClick = (e) => {
+    history.push(`restaurant/${props.data.id}`)
+  }
   return (
-    <div style={styles.container}>
+    <div style={styles.container} onClick={handleClick}>
       <div>
-        <img alt="restaurant-image" src={imageHolder} style={styles.image} />
+        <img alt="restaurant-image" src={props.data.images[0]} style={styles.image} />
       </div>
-      <p style={{ ...styles.title, ...styles.noMargin }}>Keika Ramen</p>
-      <p style={styles.noMargin}>Classic • Japan</p>
+      <p style={{ ...styles.title, ...styles.noMargin }}>{props.data.name}</p>
+      <p style={styles.noMargin}>{props.data.cuisine}</p>
       <div style={styles.footer}>
-        <Rate style={styles.rate} />
-        <p>Open Now</p>
+        <Rate style={styles.rate} data={props.data.rate} />
+        <p className="primary-text cursor-pointer">{props.data.status}</p>
       </div>
     </div>
   );
@@ -20,15 +24,17 @@ export default function RestaurantCard(){
 
 const styles = {
   container: {
-    background: '#FFFFFF 0 % 0 % no - repeat padding - box',
+    background: '#FFFFFF',
     boxShadow: '0px 8px 7px #00000012',
     borderRadius: '15px',
-    padding: 12
+    padding: 12,
+    cursor: 'pointer'
   },
   image: {
     width: '100%',
-    height: 240,
-    objectFit: 'cover'
+    height: 200,
+    objectFit: 'cover',
+    borderRadius: '10px',
   },
   title: {
     fontWeight: 'bold',
@@ -38,9 +44,10 @@ const styles = {
   },
   footer: {
     display: 'flex',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    marginTop: '10px'
   },
   rate: {
-    
+
   }
 };

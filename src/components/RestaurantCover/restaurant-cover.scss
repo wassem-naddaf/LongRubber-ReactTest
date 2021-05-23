@@ -1,0 +1,22 @@
+.restaurant-cover {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 15px;
+    .basic-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        height: 225px;
+    }
+    h2 {
+        font-size: 54px;
+        margin: 0;
+    }
+    .status {
+        font-weight: 600;
+    }
+    img {
+        padding: 6px;
+    }
+}
