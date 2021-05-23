@@ -1,5 +1,5 @@
 import api from '../plugins/axios';
-import { loading } from '../features/user/userSlice';
+import { loading, phoneNumber } from '../features/user/userSlice';
 
 export const userActions = {
     login,
@@ -9,6 +9,7 @@ export const userActions = {
 function login(data) {
     return dispatch => {
         dispatch(loading(true));
+        dispatch(phoneNumber(data));
         try {
             return api.post("/login", data)
         } catch (e) {

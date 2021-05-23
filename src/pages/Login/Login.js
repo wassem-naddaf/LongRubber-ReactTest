@@ -48,6 +48,7 @@ export default function Login() {
 
       <form style={styles.form}>
         <PhoneInput
+          country="US"
           placeholder="Mobile number"
           value={mobileNumber}
           onChange={setMobileNumber}

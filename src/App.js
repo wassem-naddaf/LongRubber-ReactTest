@@ -17,9 +17,6 @@ import ReactLoading from 'react-loading';
 
 function App() {
   const isLoading = useSelector(selectIsLoading);
-  useEffect(() => {
-    console.log(isLoading)
-  }, isLoading)
   return (
     <Router>
       <div>

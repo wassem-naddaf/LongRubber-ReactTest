@@ -2,7 +2,8 @@ import { createSlice } from '@reduxjs/toolkit'
 let state = JSON.parse(localStorage.getItem('userInfo')) || {
   loggedIn: false,
   isLoading: false,
-  accessToken: null
+  accessToken: null,
+  phoneNumber: null
 }
 export const userSlice = createSlice({
   name: 'user',
@@ -15,18 +16,23 @@ export const userSlice = createSlice({
       // immutable state based off those changes
       state.loggedIn = true;
       state.accessToken = action.payload.data.access_token;
+
       localStorage.setItem('userInfo', JSON.stringify(state));
     },
     loading: (state, action) => {
       state.isLoading = action.payload;
+    },
+    phoneNumber: (state, action) => {
+      state.phoneNumber = action.payload.phone_number;
     }
   }
 })
 
-export const { login, loading } = userSlice.actions
+export const { login, loading, phoneNumber } = userSlice.actions
 
 export const selectIsLoggedIn = state => state.user.loggedIn;
 export const selectIsLoading = state => state.user.isLoading;
+export const selectPhoneNumber = state => state.user.phoneNumber;
 
 export default userSlice.reducer;
 

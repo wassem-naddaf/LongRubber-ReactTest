@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router';
 import { userActions } from '../../actions';
-import { selectIsLoggedIn, login, loading } from '../../features/user/userSlice';
+import { selectIsLoggedIn, login, loading, selectPhoneNumber } from '../../features/user/userSlice';
 // style
 import './otp.scss';
 
@@ -13,13 +13,14 @@ import OTPInput from '../../components/OTPInput/OTPInput';
 
 export default function OTP() {
   const isLoggedIn = useSelector(selectIsLoggedIn);
+  const phoneNumber = useSelector(selectPhoneNumber);
   const dispatch = useDispatch();
   const [code, setCode] = useState();
 
   const loginClick = (e) => {
     e.preventDefault();
     //TODO: dispatch something to /login/otp to get an access token 
-    dispatch(userActions.verify({ otp: code, phone_number: '9999' })).then(
+    dispatch(userActions.verify({ otp: code, phone_number: phoneNumber })).then(
       res => {
         dispatch(loading(false));
         dispatch(login(res));
